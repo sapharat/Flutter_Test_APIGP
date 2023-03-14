@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:convert';
 
 import 'package:delivert_system/services/GeolocatorService.dart';
 import 'package:flutter/material.dart';
@@ -12,24 +13,20 @@ class AllStores extends StatefulWidget {
   _AllStoresState createState() => _AllStoresState();
 }
 
-final GeolocatorService geolocatorservice = GeolocatorService();
-
 class _AllStoresState extends State<AllStores> {
   Position? _currentUserPosition;
   double? distanceImMeter = 0.0;
   Data data = Data();
-  late LocationPermission permission;
 
   Future _getTheDistance() async {
-    permission =
-        (await geolocatorservice.determinePosition()) as LocationPermission;
     _currentUserPosition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
 
     for (int i = 0; i < data.allstores.length; i++) {
       double storelat = data.allstores[i]['lat'];
       double storelng = data.allstores[i]['lng'];
-
+      print(_currentUserPosition!.latitude);
+      print(_currentUserPosition!.longitude);
       distanceImMeter = await Geolocator.distanceBetween(
         _currentUserPosition!.latitude,
         _currentUserPosition!.longitude,
@@ -72,7 +69,7 @@ class _AllStoresState extends State<AllStores> {
             itemBuilder: (context, index) {
               return Container(
                 color: Color(0xff3498db),
-                height: height * 0.9,
+                height: height * 0.5,
                 width: width * 0.3,
                 child: Column(
                   children: [
@@ -105,7 +102,7 @@ class _AllStoresState extends State<AllStores> {
                         Text(
                           "${data.allstores[index]['distance'].round()} KM Away",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 10,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),

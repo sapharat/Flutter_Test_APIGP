@@ -1,18 +1,19 @@
 class Data {
   List allstores = [
     {
-      "name": "ร้านข้าวมันไก่",
+      "name": "สะพานพระราม7",
       "image":
           "https://www.thaismescenter.com/wp-content/uploads/2018/09/c1.jpg",
-      "lat": 13.043618,
-      "lng": 80.279824,
+      "lat": 13.81446926776921,
+      "lng": 100.51410214017434,
       "distance": 0,
     },
     {
       "name": "ร้านขายผัก",
       "image":
           "https://img.wongnai.com/p/1920x0/2021/08/05/7b572a233d7d42639f0f82d7ca8ad4ec.jpg",
-      "lng": 80.265799,
+      "lat": 13.862091220966418,
+      "lng": 100.51861678392763,
       "distance": 0,
     },
     {
